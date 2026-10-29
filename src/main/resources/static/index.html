@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tic-Tac-Toe</h1>
+        
+        <!-- Auth Section -->
+        <div id="auth-section">
+            <div class="auth-tabs">
+                <button id="tab-login" class="tab active" onclick="showTab('login')">Вход</button>
+                <button id="tab-register" class="tab" onclick="showTab('register')">Регистрация</button>
+            </div>
+            
+            <div id="login-form" class="auth-form">
+                <h2>Вход</h2>
+                <input type="text" id="login-login" placeholder="Логин">
+                <input type="password" id="login-password" placeholder="Пароль">
+                <button onclick="login()">Войти</button>
+            </div>
+            
+            <div id="register-form" class="auth-form" style="display: none;">
+                <h2>Регистрация</h2>
+                <input type="text" id="reg-login" placeholder="Логин">
+                <input type="password" id="reg-password" placeholder="Пароль">
+                <button onclick="register()">Зарегистрироваться</button>
+            </div>
+        </div>
+
+        <!-- Game Section -->
+        <div id="game-section" style="display: none;">
+            <div class="user-info">
+                <p>Ваш логин: <span id="user-login"></span></p>
+                <p>Ваш UUID: <span id="user-uuid"></span></p>
+            </div>
+            
+            <div class="game-controls">
+                <h2>Создать игру</h2>
+                <select id="game-type">
+                    <option value="VS_PLAYER">Против игрока</option>
+                    <option value="VS_COMPUTER">Против компьютера</option>
+                </select>
+                <button onclick="createGame()">Создать игру</button>
+            </div>
+
+            <div class="user-search">
+                <h2>Поиск игрока по UUID</h2>
+                <input type="text" id="search-uuid" placeholder="UUID игрока">
+                <button onclick="findUserByUuid()">Найти</button>
+                <div id="user-result"></div>
+            </div>
+
+            <div class="game-list">
+                <h2>Доступные игры</h2>
+                <button onclick="getWaitingGames()">Обновить список</button>
+                <div id="games-list"></div>
+            </div>
+
+            <div id="game-board" style="display: none;">
+                <h2>Игра</h2>
+                <p>UUID игры: <span id="game-uuid"></span></p>
+                <p>Состояние: <span id="game-state"></span></p>
+                <p>Игрок 1 (X): <span id="player1-login"></span></p>
+                <p>Игрок 2 (O): <span id="player2-login"></span></p>
+                <p>Победитель: <span id="winner-login"></span></p>
+                <div class="grid" id="grid"></div>
+                <div class="controls">
+                    <input type="number" id="row" placeholder="Строка (0-2)" min="0" max="2">
+                    <input type="number" id="col" placeholder="Столбец (0-2)" min="0" max="2">
+                    <button onclick="makeMove()">Сделать ход</button>
+                    <button onclick="refreshGame(true)">Обновить игру</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
